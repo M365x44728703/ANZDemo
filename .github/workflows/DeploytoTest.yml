@@ -24,10 +24,12 @@ jobs:
         uses: microsoft/powerplatform-actions/actions-install@v1
 
       - name: Download Solution Artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          workflow: deploy-solution.yml
-          name: Pack NTTDataSolution
+          name: NTTDataSolution
+          path: |
+            main/NTTDataSolution.zip
+            main/NTTDataSolution_managed.zip
 
       - name: Import Managed Solution
         uses: microsoft/powerplatform-actions/import-solution@v1
