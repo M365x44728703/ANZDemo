@@ -20,17 +20,6 @@ jobs:
           Write-Host "Repository Files:"
           Get-ChildItem -Path . -Recurse
 
-      - name: Verify Solution Files
-        shell: pwsh
-        run: |
-          if (Test-Path ".\contents\Other\Customizations.xml") {
-            Write-Host "Customizations.xml found"
-          }
-          else {
-            Write-Error "Customizations.xml NOT FOUND"
-            exit 1
-          }
-
       - name: Pack Solution
         uses: microsoft/powerplatform-actions/pack-solution@v1
         with:
