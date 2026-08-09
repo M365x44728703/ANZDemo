@@ -1,0 +1,29 @@
+name: Deploy NTTDataSolution
+
+on:
+  workflow_run:
+    workflows:
+      - Pack NTTDataSolution
+    branches:
+      - main
+    types:
+      - completed
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    environment: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Import Managed Solution
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: https://org69155e68.crm.dynamics.com
+          user-name: ${{ secrets.UATUSERNAME }}
+          password-secret: ${{ secrets.UATPASSWORD }}
+          solution-file: NTTDataSolution.zip_managed.zip
