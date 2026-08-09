@@ -14,7 +14,7 @@ on:
 jobs:
   deploy:
     runs-on: windows-latest
-    environment: testUAT
+    environment: production
 
     steps:
       - name: Checkout Repository
@@ -37,8 +37,8 @@ jobs:
           environment-url: https://org69155e68.crm.dynamics.com
           app-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.SECRET_ID }}
-          user-name: ${{ secrets.USERNAME }}
           tenant-id: ${{ secrets.TENANT_ID }}
+          user-name: ${{ secrets.USERNAME }}
           password-secret: ${{ secrets.PASSWORD }}
           solution-file: NTTDataSolution_managed.zip
    
