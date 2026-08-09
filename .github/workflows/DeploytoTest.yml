@@ -26,8 +26,8 @@ jobs:
       - name: Download Solution Artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: pack-solution.yml
-          name: packed-solution
+          workflow: deploy-solution.yml
+          name: Pack NTTDataSolution
 
       - name: Import Managed Solution
         uses: microsoft/powerplatform-actions/import-solution@v1
