@@ -59,7 +59,5 @@ jobs:
           app-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.SECRET_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
-          user-name: ${{ secrets.USERNAME }}
-          password-secret: ${{ secrets.PASSWORD }}
           solution-file: NTTDataSolution_managed.zip
    
