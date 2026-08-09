@@ -35,7 +35,10 @@ jobs:
         uses: microsoft/powerplatform-actions/import-solution@v1
         with:
           environment-url: https://org69155e68.crm.dynamics.com
+          app-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.SECRET_ID }}
           user-name: ${{ secrets.USERNAME }}
+          tenant-id: ${{ secrets.TENANT_ID }}
           password-secret: ${{ secrets.PASSWORD }}
           solution-file: NTTDataSolution_managed.zip
    
