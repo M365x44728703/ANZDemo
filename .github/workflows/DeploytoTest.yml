@@ -30,6 +30,27 @@ jobs:
           path: |
             main/NTTDataSolution.zip
             main/NTTDataSolution_managed.zip
+  
+      - name: Validate Secrets
+        shell: pwsh
+        run: |
+          if ("${{ secrets.CLIENT_ID }}" -eq "") {
+            Write-Error "CLIENT_ID is empty"
+          } else {
+            Write-Host "CLIENT_ID found"
+          }
+
+          if ("${{ secrets.TENANT_ID }}" -eq "") {
+            Write-Error "TENANT_ID is empty"
+          } else {
+            Write-Host "TENANT_ID found"
+          }
+      
+          if ("${{ secrets.CLIENT_SECRET }}" -eq "") {
+            Write-Error "CLIENT_SECRET is empty"
+          } else {
+            Write-Host "CLIENT_SECRET found"
+          }
 
       - name: Import Managed Solution
         uses: microsoft/powerplatform-actions/import-solution@v1
