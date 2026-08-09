@@ -2,26 +2,28 @@ name: Deploy NTTDataSolution
 
 on:
   workflow_run:
-    workflows: ["Pack NTTDataSolution"]
-    branches: [main]
-    types: 
+    workflows:
+      - Pack NTTDataSolution
+    branches:
+      - main
+    types:
       - completed
+
   workflow_dispatch:
 
 jobs:
-  Deploy:
+  deploy:
     runs-on: windows-latest
     environment: test
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Import Managed Solution
+        uses: microsoft/powerplatform-actions/import-solution@v1
         with:
-          workflow: "Pack-solution.yaml"
-    Uses: microsoft/powerplatform-actions/import-solution@v0
-    with: environment-url: https://org69155e68.crm.dynamics.com
-      user-name: ${{ secrets.USERNAME }} password-secret: ${{ secrets.PASSWORD }} 
-      solution-file NTTDataSolution.zip_managed.zip
-    
-  git add . 
-  git commit -m "created deploy-solution.yml" 
-  git push
+          environment-url: https://org69155e68.crm.dynamics.com
+          user-name: ${{ secrets.UATUSERNAME }}
+          password-secret: ${{ secrets.UATPASSWORD }}
+          solution-file: NTTDataSolution.zip_managed.zip
