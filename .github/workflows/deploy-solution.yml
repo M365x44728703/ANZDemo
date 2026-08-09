@@ -20,6 +20,9 @@ jobs:
           Write-Host "Repository Files:"
           Get-ChildItem -Path . -Recurse
 
+      - name: Install Power Platform Tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
       - name: Pack Solution
         uses: microsoft/powerplatform-actions/pack-solution@v1
         with:
